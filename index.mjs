@@ -23,7 +23,7 @@ const splitter = new RecursiveCharacterTextSplitter({
 // created chunks from pdf
 const splittedDocs = await splitter.splitDocuments(docs);
 
-const embeddings = new OpenAIEmbeddings({ openAIApiKey: "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"});
+const embeddings = new OpenAIEmbeddings({ openAIApiKey: "APIKEY"});
 
 const vectorStore = await HNSWLib.fromDocuments(
   splittedDocs,
@@ -32,7 +32,7 @@ const vectorStore = await HNSWLib.fromDocuments(
 const vectorStoreRetriever = vectorStore.asRetriever();
 const model = new OpenAI({
   modelName: 'gpt-3.5-turbo',
-  openAIApiKey: "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",
+  openAIApiKey: "APIKEY",
 });
 
 const chain = RetrievalQAChain.fromLLM(model, vectorStoreRetriever);
